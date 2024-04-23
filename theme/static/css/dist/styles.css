@@ -800,6 +800,10 @@ select {
   height: 100vh;
 }
 
+.flex-col {
+  flex-direction: column;
+}
+
 .items-center {
   align-items: center;
 }
@@ -808,9 +812,26 @@ select {
   justify-content: center;
 }
 
+.gap-\[10px\] {
+  gap: 10px;
+}
+
+.rounded-xl {
+  border-radius: 0.75rem;
+}
+
+.bg-blue-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(37 99 235 / var(--tw-bg-opacity));
+}
+
 .bg-gray-50 {
   --tw-bg-opacity: 1;
   background-color: rgb(249 250 251 / var(--tw-bg-opacity));
+}
+
+.p-\[10px\] {
+  padding: 10px;
 }
 
 .font-serif {
@@ -830,7 +851,7 @@ select {
   letter-spacing: 0em;
 }
 
-.text-red-300 {
+.text-red-400 {
   --tw-text-opacity: 1;
-  color: rgb(252 165 165 / var(--tw-text-opacity));
+  color: rgb(248 113 113 / var(--tw-text-opacity));
 }

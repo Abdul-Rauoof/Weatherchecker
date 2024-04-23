@@ -1,16 +1,56 @@
 {% load static tailwind_tags %}
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
     {% tailwind_css %}
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap"
+      rel="stylesheet"
+    />
 </head>
-<body>
 
-    <p class="text-4xl text-red-400">hello</p>
+<body class='container' {% if messages %}
+    style="background-image: url('https://images.pexels.com/photos/3008509/pexels-photo-3008509.jpeg?auto=compress&cs=tinysrgb&w=1920');" 
+  {% else %}
+  style="background-image: url('{{ image_url }}');"
+  {% endif %}>
+  <div class="flex flex-col gap-[10px]">
+    <h1 class="text-5xl text-red-400">WEATHER CHECKER</h1>
     
+    <form method="POST" class="">
+      {% csrf_token %}
+      <input type="text" name="city" required="true" placeholder="Enter City">
+      <button type="submit" class="bg-blue-600 p-[10px] rounded-xl ">Check</button>
+    </form>
+    <div class="weather">
+      <div class="left">
+        <h2 class="">{{ temp }}&#176; C</h2>
+        <h2 class="">{{ city }}</h2>
+      </div>
+      <div class="">
+        <div class="">
+          <p><img src="http://openweathermap.org/img/w/{{ icon }}.png" width="120px"></p>
+        </div>
+        <div class="">
+          <p>{{ description }}</p>
+          <p>{{ day }}</p>
+          {% if messages %}
+          <ul>
+            {% for message in messages %}
+            <li>{{message}}</li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+ 
 </body>
 </html>
