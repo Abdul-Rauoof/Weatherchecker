@@ -28,10 +28,16 @@
       <input type="text" name="city" required="true" placeholder="Enter City">
       <button type="submit" class="bg-blue-600 p-[10px] rounded-xl ">Check</button>
     </form>
-    <div class="weather">
-      <div class="left">
-        <h2 class="">{{ temp }}&#176; C</h2>
-        <h2 class="">{{ city }}</h2>
+    <div class="">
+      <div class="">
+        <h2 class="text-red-400">Temperature: {{ temp }}&#176; C</h2>
+        <h2 class="">Minimum Temperature: {{ tempmin }}&#176; C</h2>
+        <h2 class="">Maximum Temperature: {{ tempmax }}&#176; C</h2>
+        <h2 class="">Humidity: {{ humidity }}</h2>
+        <h2 class="">City: {{ city }}</h2>
+        <h2 class="">Country: {{ country }}</h2>
+        <h2 class="">Sunrise timing: {{ sunrise }}</h2>
+        <h2 class="">Sunset timing: {{ sunset }}</h2>
       </div>
       <div class="">
         <div class="">
@@ -39,7 +45,27 @@
         </div>
         <div class="">
           <p>{{ description }}</p>
-          <p>{{ day }}</p>
+          <p>Date: {{ date }}</p>
+          <p>Day: {{ day }}</p>
+          <p>{{ weakdays }}</p>
+          
+          <div class="flex flex-col gap-[10px] mt-[20px]">
+            {% for daydata in forecastdata %}
+            
+            
+            <img src="http://openweathermap.org/img/w/{{ daydata.weather.0.icon }}.png" alt="" width="120px">
+            <p>{{ daydata.weather.0.description }}</p>
+            <p>Temperature: {{ daydata.main.temp }}&#176; C</p>
+            <p>Minimum Temperature: {{ daydata.main.temp_min }}&#176; C</p>
+            <p>Maximum Temperature: {{ daydata.main.temp_max }}&#176; C</p>
+            <p>Humidity: {{ daydata.main.humidity }}%</p>
+            <p>{{ forloop.counter0 }}</p>
+
+            
+            {% endfor %}
+            
+            
+          </div>
           {% if messages %}
           <ul>
             {% for message in messages %}
@@ -50,6 +76,7 @@
         </div>
       </div>
     </div>
+    
   </div>
  
 </body>

@@ -792,6 +792,10 @@ select {
   margin-right: auto;
 }
 
+.mt-\[20px\] {
+  margin-top: 20px;
+}
+
 .flex {
   display: flex;
 }
@@ -814,6 +818,18 @@ select {
 
 .gap-\[10px\] {
   gap: 10px;
+}
+
+.gap-5 {
+  gap: 1.25rem;
+}
+
+.gap-\[20px\] {
+  gap: 20px;
+}
+
+.gap-\[40px\] {
+  gap: 40px;
 }
 
 .rounded-xl {

@@ -10,6 +10,7 @@ load_dotenv()
 
 API_KEY = os.getenv('API_KEY')
 SEARCH_ENGINE_ID = os.getenv('SEARCH_ENGINE_ID')
+OPENWEATHER_API_KEY = os.getenv('OPENWEATHER_API_KEY')
 
 
 # Quick-start development settings - unsuitable for production
