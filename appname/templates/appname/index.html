@@ -15,69 +15,124 @@
     />
 </head>
 
-<body class='container' {% if messages %}
+<body class='bg-gray-300' {% if messages %}
     style="background-image: url('https://images.pexels.com/photos/3008509/pexels-photo-3008509.jpeg?auto=compress&cs=tinysrgb&w=1920');" 
   {% else %}
-  style="background-image: url('{{ image_url }}');"
+  style="background-image: url('https://images.pexels.com/photos/3008509/pexels-photo-3008509.jpeg?auto=compress&cs=tinysrgb&w=1920');"
   {% endif %}>
-  <div class="flex flex-col gap-[10px]">
-    <h1 class="text-5xl text-red-400">WEATHER CHECKER</h1>
+  <h1  class="animate-bounce px-10 text-4xl font-bold text-white my-10">WEATHER CHECKER</h1>
+  <div class=" container mx-auto w-[calc(100vw-30px)] flex flex-col gap-[10px] px-[20px] items-center">
     
-    <form method="POST" class="">
+    <form method="POST" class="flex jusify-between gap-6 ">
       {% csrf_token %}
-      <input type="text" name="city" required="true" placeholder="Enter City">
-      <button type="submit" class="bg-blue-600 p-[10px] rounded-xl ">Check</button>
+      <input class=" rounded-md focus:ring-2 focus:ring-black bg-gray-200/20 focus:bg-white/30 focus:text-black" type="text" name="city" required="true" placeholder="Enter City">
+      <button type="submit" class="ring-2 ring-violet-200 ring-offset-2 text-white font-bold hover:bg-violet-600/60 bg-violet-800/60 px-[30px] py-[10px] rounded-xl ">Check</button>
     </form>
-    <div class="">
-      <div class="">
-        <h2 class="text-red-400">Temperature: {{ temp }}&#176; C</h2>
-        <h2 class="">Minimum Temperature: {{ tempmin }}&#176; C</h2>
-        <h2 class="">Maximum Temperature: {{ tempmax }}&#176; C</h2>
-        <h2 class="">Humidity: {{ humidity }}</h2>
-        <h2 class="">City: {{ city }}</h2>
-        <h2 class="">Country: {{ country }}</h2>
-        <h2 class="">Sunrise timing: {{ sunrise }}</h2>
-        <h2 class="">Sunset timing: {{ sunset }}</h2>
-      </div>
-      <div class="">
-        <div class="">
-          <p><img src="http://openweathermap.org/img/w/{{ icon }}.png" width="120px"></p>
+
+    {% if not messages %}
+    <div class="mt-10">
+      <div class=" bg-black/40 text-white px-8 pb-8 rounded-3xl border-4 border-white">
+        <div class="flex justify-between items-center">
+          <div class="flex flex-col items-center">
+            <p class="font-bold text-4xl">{{ description }}</p>
+            <p class="text-semibold text-2xl">{{ city }}, {{ country }}</p>
+          </div>
+
+          <div class="flex flex-col items-center">
+            <p><img src="http://openweathermap.org/img/w/{{ icon }}.png" width="100px" class="animate-pulse transition duration-1000"></p>
+            <div class="flex flex-col items-center">
+              <h2 class="font-bold text-3xl">{{ temp }}&#176; C</h2>
+              <h2 class="text-semibold text-sm">{{ tempmin }}&#176; C - {{ tempmax }}&#176; C</h2>
+            </div>
+          </div>
         </div>
-        <div class="">
-          <p>{{ description }}</p>
-          <p>Date: {{ date }}</p>
-          <p>Day: {{ day }}</p>
-          <p>{{ weakdays }}</p>
-          
-          <div class="flex flex-col gap-[10px] mt-[20px]">
+        <p class="font-bold text-2xl mt-4">{{ date }} {{ day }}</p>
+        <div class="flex flex-col divide-y-2 mt-4 gap-4">
+          <h2 class="text-semibold text-2xl">Humid: <span class="font-bold">{{ humidity }}%</span></h2>
+          <h2 class="text-semibold text-2xl">Sunrise: <span class="font-bold">{{ sunrise }}</span></h2>
+          <h2 class='text-semibold text-2xl'>Sunset: <span class="font-bold">{{ sunset }}</span></h2>
+        </div>
+      </div>
+        
+      
+      
+      <div class="mt-20 mb-44">
+        <div class="flex flex-col bg-black/10 text-white p-10 space-y-8">
             {% for daydata in forecastdata %}
             
-            
-            <img src="http://openweathermap.org/img/w/{{ daydata.weather.0.icon }}.png" alt="" width="120px">
-            <p>{{ daydata.weather.0.description }}</p>
-            <p>Temperature: {{ daydata.main.temp }}&#176; C</p>
-            <p>Minimum Temperature: {{ daydata.main.temp_min }}&#176; C</p>
-            <p>Maximum Temperature: {{ daydata.main.temp_max }}&#176; C</p>
-            <p>Humidity: {{ daydata.main.humidity }}%</p>
-            <p>{{ forloop.counter0 }}</p>
-
-            
+            <div class="bg-black/40 text-white p-10 rounded-2xl even:bg-black/60 even:border-4 even:border-white border-4 border-black">
+              <div class="flex justify-around items-center divide-x-4">
+                  <p class="font-bold text-4xl px-4">{{ daydata.weather.0.description }}</p>
+                <div class="flex flex-col items-center px-4">
+                  <img src="http://openweathermap.org/img/w/{{ daydata.weather.0.icon }}.png" alt="" width="70px">
+                  <h2 class="font-bold text-2xl">{{ daydata.main.temp }}&#176;C</h2>
+                </div>
+              </div>
+              <p class="font-bold text-2xl mt-4">{{ date }}  {{ day }}</p>
+              <div class="flex flex-col divide-y-2 mt-4 gap-4">
+                <h2 class="text-semibold text-2xl">Humid: <span class="font-bold">{{ daydata.main.humidity }}%</span></h2>
+              </div>
+            </div>
             {% endfor %}
-            
-            
           </div>
-          {% if messages %}
-          <ul>
-            {% for message in messages %}
-            <li>{{message}}</li>
-            {% endfor %}
-          </ul>
-          {% endif %}
+        </div>
+      {% endif %}
+      
+
+        {% if messages %}
+        <ul class="mt-[200px]">
+          {% for message in messages %}
+          <li class="animate-pulse text-5xl font-bold text-red-500 ">{{message}}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </div>
+    </div>
+    {%if not messages%}
+    <div class="bg-black/70 text-white font-bold w-screen h-[400px] ">
+      <div class="px-12 flex flex-col items-center text-xl gap-20 ">
+        <q className="italic text-rose-100 mt-14">
+          Working with talent and passion is my hobby,<br /> And always looking for building something spectacular.
+        </q>
+        <p class="font-bold">Thankyou for visiting</p>
+        <div className="flex flex-col gap-8">
+          <span className="font-bold">About this website:</span> 
+          <p className="">
+            This website is built with Django and Tailwind css.
+          </p>
         </div>
       </div>
     </div>
+    {% endif %}
+  </body>
+  </html>
+
+
+      
+              
+            
+          
+  
+
+        
+        
+        
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      
+          
+
+            
+            
     
-  </div>
  
-</body>
-</html>

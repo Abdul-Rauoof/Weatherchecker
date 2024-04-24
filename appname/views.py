@@ -68,10 +68,10 @@ def home(request):
     
     except KeyError:
           
-          messages.error(request,'Incorrect City name')   
+          messages.error(request,'Incorrect City')   
           day = datetime.date.today()
 
-          return render(request,'appname/index.html' ,{'description':'' , 'icon':'' ,'temp':'' , 'date':'' , 'day':'', 'city':'' , 'tempmin':'', 'tempmax':'', 'country':'', 'sunrise':'', 'sunset':'', 'humidity':'' } )
+          return render(request,'appname/index.html')
                
     
     
