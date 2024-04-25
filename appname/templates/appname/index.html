@@ -19,13 +19,13 @@
 </head>
 
 <body class='bg-gray-300 ' style="background-image: url('https://images.pexels.com/photos/3008509/pexels-photo-3008509.jpeg?auto=compress&cs=tinysrgb&w=1920');">
-  <h1  class="bg-gradient-to-t from-white to-gray-400 text-opacity-0 bg-clip-text animate-bounce px-10 text-4xl font-bold text-white my-10">WEATHER CHECKER</h1>
+  <h1  class="bg-gradient-to-t from-white to-gray-400 text-opacity-0 bg-clip-text animate-bounce mx-8 pl-4 text-4xl font-bold text-white my-10">WEATHER CHECKER</h1>
   <div class=" container mx-[20px] w-[calc(100vw-30px)] flex flex-col gap-[10px] items-stretch">
     
-    <form method="POST" class="flex flex-col jusify-between items-center gap-6 ">
+    <form method="POST" class="flex flex-col jusify-between items-center gap-6 mx-8 bg-white/20 rounded-3xl p-10">
       {% csrf_token %}
       <input class=" rounded-md focus:ring-2 focus:ring-black bg-gray-200/20 focus:bg-white/30 focus:text-black" type="text" name="city" required="true" placeholder="Enter City">
-      <button type="submit" class="ring-2 ring-blue-400 text-white font-bold hover:bg-blue-800/60 bg-blue-600/60 px-[100px] py-[10px] rounded-xl ">Check</button>
+      <button type="submit" class="ring-2 ring-blue-900 text-white font-bold hover:bg-blue-800/80 bg-blue-600/80 px-[100px] py-[10px] rounded-xl ">Check</button>
     </form>
 
     {% if not messages %}

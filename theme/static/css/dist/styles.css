@@ -807,6 +807,16 @@ select {
   margin-bottom: 2.5rem;
 }
 
+.mx-10 {
+  margin-left: 2.5rem;
+  margin-right: 2.5rem;
+}
+
+.mx-12 {
+  margin-left: 3rem;
+  margin-right: 3rem;
+}
+
 .mb-10 {
   margin-bottom: 2.5rem;
 }
@@ -1028,6 +1038,45 @@ select {
   background-color: rgb(225 29 72 / 0.5);
 }
 
+.bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.bg-sky-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(56 189 248 / var(--tw-bg-opacity));
+}
+
+.bg-sky-400\/50 {
+  background-color: rgb(56 189 248 / 0.5);
+}
+
+.bg-sky-600\/50 {
+  background-color: rgb(2 132 199 / 0.5);
+}
+
+.bg-sky-600\/30 {
+  background-color: rgb(2 132 199 / 0.3);
+}
+
+.bg-white\/30 {
+  background-color: rgb(255 255 255 / 0.3);
+}
+
+.bg-white\/20 {
+  background-color: rgb(255 255 255 / 0.2);
+}
+
+.bg-blue-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(37 99 235 / var(--tw-bg-opacity));
+}
+
+.bg-blue-600\/80 {
+  background-color: rgb(37 99 235 / 0.8);
+}
+
 .bg-gradient-to-t {
   background-image: linear-gradient(to top, var(--tw-gradient-stops));
 }
@@ -1084,9 +1133,9 @@ select {
   padding-right: 2rem;
 }
 
-.px-\[30px\] {
-  padding-left: 30px;
-  padding-right: 30px;
+.px-\[100px\] {
+  padding-left: 100px;
+  padding-right: 100px;
 }
 
 .py-10 {
@@ -1104,19 +1153,8 @@ select {
   padding-bottom: 10px;
 }
 
-.px-\[50px\] {
-  padding-left: 50px;
-  padding-right: 50px;
-}
-
-.px-\[70px\] {
-  padding-left: 70px;
-  padding-right: 70px;
-}
-
-.px-\[100px\] {
-  padding-left: 100px;
-  padding-right: 100px;
+.pl-4 {
+  padding-left: 1rem;
 }
 
 .font-serif {
@@ -1230,6 +1268,16 @@ select {
   --tw-ring-color: rgb(96 165 250 / var(--tw-ring-opacity));
 }
 
+.ring-blue-900 {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(30 58 138 / var(--tw-ring-opacity));
+}
+
+.ring-blue-800 {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(30 64 175 / var(--tw-ring-opacity));
+}
+
 .transition {
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
@@ -1268,6 +1316,10 @@ select {
 
 .hover\:bg-blue-800\/60:hover {
   background-color: rgb(30 64 175 / 0.6);
+}
+
+.hover\:bg-blue-800\/80:hover {
+  background-color: rgb(30 64 175 / 0.8);
 }
 
 .focus\:bg-white\/30:focus {
