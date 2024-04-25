@@ -8,8 +8,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 from dotenv import load_dotenv # type: ignore
 load_dotenv()
 
-API_KEY = os.getenv('API_KEY')
-SEARCH_ENGINE_ID = os.getenv('SEARCH_ENGINE_ID')
 OPENWEATHER_API_KEY = os.getenv('OPENWEATHER_API_KEY')
 
 
